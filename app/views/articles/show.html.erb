@@ -1,17 +1,23 @@
-<h1><%= @article.title %></h1>
+<div class='flex-col text-emerald-700'>
+  <h1><%= @article.title %></h1>
 
-<p><%= @article.body %></p>
+  <p><%= @article.body %></p>
 
-<ul>
-  <li><%= link_to 'Edit', edit_article_path(@article) %></li>
-  <li><%= link_to 'Destroy', article_path(@article), data: {
-            turbo_method: :delete,
-            turbo_confirm: 'Are you sure?'
-          } %></li>
-</ul>
+  <ul>
+    <li class='my-3 text-sm hover:underline decoration-emerald-700 decoration-2 hover:font-bold hover:text-emerald-900'>
+      <%= link_to 'Edit', edit_article_path(@article) %>
+    </li>
+    <li class='my-3 text-sm hover:underline decoration-emerald-700 decoration-2 hover:font-bold hover:text-emerald-900'>
+      <%= link_to 'Destroy', article_path(@article), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: 'Are you sure?'
+                  } %>
+    </li>
+  </ul>
 
-<h2>Comments</h2>
-<%= render @article.comments %>
+  <h2>Comments</h2>
+  <%= render @article.comments %>
 
-<h2>Add a comment</h2>
-<%= render 'comments/form' %>
+  <h2>Add a comment</h2>
+  <%= render 'comments/form' %>
+</div>
