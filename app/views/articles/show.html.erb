@@ -1,14 +1,15 @@
-<div class='flex-col text-emerald-700'>
+<div>
+  <button><%= link_to 'Home', root_path %></button>
   <h1><%= @article.title %></h1>
 
   <p><%= @article.body %></p>
 
   <ul>
-    <li class='my-3 text-sm hover:underline decoration-emerald-700 decoration-2 hover:font-bold hover:text-emerald-900'>
+    <li>
       <%= link_to 'Edit', edit_article_path(@article) %>
     </li>
-    <li class='my-3 text-sm hover:underline decoration-emerald-700 decoration-2 hover:font-bold hover:text-emerald-900'>
-      <%= link_to 'Destroy', article_path(@article), data: {
+    <li class='delete'>
+      <%= link_to 'Delete', article_path(@article), data: {
                     turbo_method: :delete,
                     turbo_confirm: 'Are you sure?'
                   } %>

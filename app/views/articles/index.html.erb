@@ -1,25 +1,25 @@
-<div class='flex-col text-emerald-700'>
-  <h1 class='mb-5 text-2xl font-semibold'>Articles</h1>
-  <h2 class='text-xl'>Our Blog has <%= Article.public_count %> articles and counting!</h2>
+<div class='flex-col'>
+  <h1 class='mb-5'>Articles</h1>
+  <h2>Our Blog has <%= Article.public_count %> articles and counting!</h2>
 
   <ul>
     <% @articles.each do |article| %>
       <% unless article.archived? %>
-        <li class='my-3 text-sm hover:underline decoration-emerald-700 decoration-2 hover:font-bold hover:text-emerald-900'>
-          <%= link_to article.title, article %>
-        </li>
-      <% end %>
+        <div class='flex'>
+          <li>
+            <%= link_to article.title, article %>
+          </li>
 
-    <% if false %>
-      <li class='my-3 text-sm hover:underline decoration-emerald-700 decoration-2 hover:font-bold hover:text-emerald-900'>
-        <%= link_to 'Destroy', article_path(article), data: {
-              turbo_method: :delete,
-              turbo_confirm: 'Are you sure?'
-            } %></li>
-      </li>
+          <li class='delete'>
+            <%= link_to 'Destroy', article_path(article), data: {
+                  turbo_method: :delete,
+                  turbo_confirm: 'Are you sure?'
+                } %>
+          </li>
+        </div>
+      <% end %>
     <% end %>
-  <% end %>
   </ul>
 
-  <button class='mt-4 hover:underline decoration-emerald-900 decoration-2 hover:font-bold'><%= link_to 'New Article', new_article_path %></button>
+  <button class='mt-1 btn-primary'><%= link_to 'New Article', new_article_path %></button>
 </div>
