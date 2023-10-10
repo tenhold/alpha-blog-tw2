@@ -1,0 +1,25 @@
+<div class='flex-col'>
+  <h1 class='mb-5'>Articles</h1>
+  <h2>Our Blog has <%= Article.public_count %> articles and counting!</h2>
+
+  <ul>
+    <% @articles.each do |article| %>
+      <% unless article.archived? %>
+        <div class='flex'>
+          <li>
+            <%= link_to article.title, article %>
+          </li>
+
+          <li class='delete'>
+            <%= link_to 'Destroy', article_path(article), data: {
+                  turbo_method: :delete,
+                  turbo_confirm: 'Are you sure?'
+                } %>
+          </li>
+        </div>
+      <% end %>
+    <% end %>
+  </ul>
+
+  <button class='mt-1 btn-primary'><%= link_to 'New Article', new_article_path %></button>
+</div>
